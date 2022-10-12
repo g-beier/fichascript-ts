@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import CharacterId from "../components/CharacterId.vue";
+</script>
 
 <template>
-  <main>
-    <h2>Teste</h2>
+  <main class="container mx-auto">
+    <CharacterId></CharacterId>
   </main>
 </template>
