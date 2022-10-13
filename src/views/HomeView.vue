@@ -3,7 +3,7 @@ import CharacterId from "../components/CharacterId.vue";
 </script>
 
 <template>
-  <main class="container mx-auto">
+  <main class="container mx-auto mt-2 px-4">
     <CharacterId></CharacterId>
   </main>
 </template>
