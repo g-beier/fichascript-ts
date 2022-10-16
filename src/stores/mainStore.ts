@@ -11,6 +11,7 @@ export const useMainStore = defineStore("MainStore", () => {
 
   const level = ref(1);
   const halfLevel = computed(() => Math.floor(level.value / 2));
+  const characterExperience = ref(0);
 
   return {
     characterName,
@@ -21,5 +22,6 @@ export const useMainStore = defineStore("MainStore", () => {
     characterJobList,
     level,
     halfLevel,
+    characterExperience,
   };
 });

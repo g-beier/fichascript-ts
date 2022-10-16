@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import {
   TransitionRoot,
   TransitionChild,
@@ -8,9 +8,9 @@ import {
   DialogTitle,
   Listbox,
   ListboxButton,
+  ListboxLabel,
   ListboxOption,
   ListboxOptions,
-  ListboxLabel,
 } from "@headlessui/vue";
 import {
   PlusCircleIcon,
@@ -18,9 +18,9 @@ import {
   CheckIcon,
 } from "@heroicons/vue/20/solid";
 import { useMainStore } from "@/stores/mainStore";
+import CharacterInput from "./CharacterInput.vue";
 
 const isExpOpen = ref(false);
-
 function openExpModal() {
   isExpOpen.value = true;
 }
@@ -28,44 +28,61 @@ function closeExpModal() {
   isExpOpen.value = false;
 }
 
+const xpArray: Array<number> = [];
+for (let i = 0; i < 20; i++) {
+  xpArray.push(i * (i + 1) * 500);
+}
+const levelByExp = computed(() => {
+  return xpArray.findIndex((x) => x > mainStore.characterExperience);
+});
+
 const mainStore = useMainStore();
 </script>
 <template>
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    <label class="block w-full">
-      <span class="text-sm text-gray-700">Nome do personagem</span>
-      <input
-        type="text"
+    <div class="w-full">
+      <CharacterInput
         v-model.trim="mainStore.characterName"
-        class="mt-1 block w-full rounded-md border-neutral-300 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-      />
-    </label>
+        :inputOptions="{ type: 'text' }"
+      >
+        Nome do Personagem
+      </CharacterInput>
+    </div>
 
-    <label class="block w-full">
-      <span class="text-sm text-gray-700">Nível</span>
-      <div class="flex">
-        <input
-          type="number"
-          min="1"
-          v-model.number="mainStore.level"
-          class="mt-1 block w-full rounded-md border-neutral-300 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
+    <div class="w-full">
+      <CharacterInput
+        v-model.trim="mainStore.characterAge"
+        :inputOptions="{ type: 'number', min: 0 }"
+      >
+        <span> Idade </span>
+      </CharacterInput>
+    </div>
+
+    <div class="flex w-full flex-row flex-nowrap items-end">
+      <CharacterInput
+        v-model.number="mainStore.level"
+        :inputOptions="{ type: 'number', min: 1, max: 20 }"
+      >
+        <span> Nível </span>
+      </CharacterInput>
+      <button
+        type="button"
+        @click="openExpModal"
+        class="px-3 py-2"
+        title="Pontos de experiência"
+      >
+        <PlusCircleIcon
+          :class="
+            mainStore.level !== levelByExp ? 'text-red-500' : 'text-neutral-500'
+          "
+          class="h-6 w-6 text-neutral-500 hover:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
         />
-        <button
-          type="button"
-          @click="openExpModal"
-          class="px-3 py-2"
-          title="Pontos de experiência"
-        >
-          <PlusCircleIcon
-            class="h-6 w-6 text-neutral-500 hover:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
-          ></PlusCircleIcon>
-        </button>
-      </div>
-    </label>
+      </button>
+    </div>
 
     <div class="block w-full">
       <Listbox v-model="mainStore.characterAlignment">
-        <ListboxLabel class="text-sm text-gray-700">Alinhamento</ListboxLabel>
+        <ListboxLabel class="text-sm text-gray-700"> Tendência </ListboxLabel>
         <div class="relative mt-1">
           <ListboxButton
             class="relative w-full cursor-default rounded-md border border-neutral-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50"
@@ -79,7 +96,7 @@ const mainStore = useMainStore();
               <ChevronUpDownIcon
                 class="h-5 w-5 text-gray-400"
                 aria-hidden="true"
-              ></ChevronUpDownIcon>
+              />
             </span>
           </ListboxButton>
           <transition
@@ -125,7 +142,7 @@ const mainStore = useMainStore();
                     v-if="selected"
                     class="absolute inset-y-0 left-0 flex items-center pl-3 text-red-600"
                   >
-                    <CheckIcon class="h-5 w-5" aria-hidden="true"></CheckIcon>
+                    <CheckIcon class="h-5 w-5" aria-hidden="true" />
                   </span>
                 </li>
               </ListboxOption>
@@ -134,6 +151,8 @@ const mainStore = useMainStore();
         </div>
       </Listbox>
     </div>
+
+    <div class="w-full"></div>
 
     <!-- DIALOG - EXPERIÊNCIA -->
     <TransitionRoot appear :show="isExpOpen" as="template">
@@ -172,9 +191,31 @@ const mainStore = useMainStore();
                   Pontos de Experiência
                 </DialogTitle>
                 <div class="mt-2">
-                  <p>content</p>
+                  <label class="block w-full">
+                    <span class="text-sm text-gray-700">
+                      Pontos de Experiência
+                    </span>
+                    <input
+                      type="number"
+                      v-model="mainStore.characterExperience"
+                      min="0"
+                      class="mt-1 block w-full rounded-md border-neutral-300 shadow-sm selection:bg-red-200 focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
+                    />
+                  </label>
+                  <p class="mt-2">
+                    {{ mainStore.characterExperience }}&nbsp;pontos de
+                    experiência corresponde ao nível&nbsp;{{ levelByExp }}.
+                  </p>
                 </div>
-                <div class="mt-4">
+                <div class="mt-4 flex flex-row flex-nowrap gap-4">
+                  <button
+                    type="button"
+                    :disabled="mainStore.level >= levelByExp"
+                    @click="(mainStore.level = levelByExp) && closeExpModal()"
+                    class="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-600"
+                  >
+                    Subir de nível
+                  </button>
                   <button
                     type="button"
                     @click="closeExpModal"
