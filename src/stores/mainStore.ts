@@ -3,10 +3,10 @@ import { defineStore } from "pinia";
 
 export const useMainStore = defineStore("MainStore", () => {
   const characterName = ref("");
-  const characterBackground = ref(undefined);
-  const characterRace = ref(undefined);
+  const characterBackground = ref(0);
+  const characterRace = ref(0);
   const characterAge = ref(undefined);
-  const characterAlignment = ref("Neutro");
+  const characterAlignment = ref("N");
   const characterJobList = reactive([0, 2]);
 
   const level = ref(1);

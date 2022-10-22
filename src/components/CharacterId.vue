@@ -19,6 +19,8 @@ import {
 } from "@heroicons/vue/20/solid";
 import { useMainStore } from "@/stores/mainStore";
 import CharacterInput from "./CharacterInput.vue";
+import CharacterSelect from "./CharacterSelect.vue";
+import CharacterCombobox from "./CharacterCombobox.vue";
 
 const isExpOpen = ref(false);
 function openExpModal() {
@@ -40,30 +42,26 @@ const mainStore = useMainStore();
 </script>
 <template>
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    <div class="w-full">
-      <CharacterInput
-        v-model.trim="mainStore.characterName"
-        :inputOptions="{ type: 'text' }"
-      >
-        Nome do Personagem
-      </CharacterInput>
-    </div>
+    <CharacterInput
+      v-model.trim="mainStore.characterName"
+      :inputOptions="{ type: 'text' }"
+    >
+      Nome do Personagem
+    </CharacterInput>
 
-    <div class="w-full">
-      <CharacterInput
-        v-model.trim="mainStore.characterAge"
-        :inputOptions="{ type: 'number', min: 0 }"
-      >
-        <span> Idade </span>
-      </CharacterInput>
-    </div>
+    <CharacterInput
+      v-model.trim="mainStore.characterAge"
+      :inputOptions="{ type: 'number', min: 0 }"
+    >
+      Idade
+    </CharacterInput>
 
     <div class="flex w-full flex-row flex-nowrap items-end">
       <CharacterInput
         v-model.number="mainStore.level"
         :inputOptions="{ type: 'number', min: 1, max: 20 }"
       >
-        <span> Nível </span>
+        Nível
       </CharacterInput>
       <button
         type="button"
@@ -80,79 +78,53 @@ const mainStore = useMainStore();
       </button>
     </div>
 
-    <div class="block w-full">
-      <Listbox v-model="mainStore.characterAlignment">
-        <ListboxLabel class="text-sm text-gray-700"> Tendência </ListboxLabel>
-        <div class="relative mt-1">
-          <ListboxButton
-            class="relative w-full cursor-default rounded-md border border-neutral-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50"
-          >
-            <span class="block truncate">
-              {{ mainStore.characterAlignment || "&nbsp; " }}
-            </span>
-            <span
-              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"
-            >
-              <ChevronUpDownIcon
-                class="h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
-            </span>
-          </ListboxButton>
-          <transition
-            leave-active-class="transition duration-100 ease-in"
-            leave-from-class="opacity-100"
-            leave-to-class="opacity-0"
-          >
-            <ListboxOptions
-              class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-            >
-              <ListboxOption
-                v-slot="{ active, selected }"
-                v-for="(a, i) in [
-                  'Leal e Bondoso',
-                  'Neutro e Bondoso',
-                  'Caótico e Bondoso',
-                  'Leal e Neutro',
-                  'Neutro',
-                  'Caótico e Neutro',
-                  'Leal e Maligno',
-                  'Neutro e Maligno',
-                  'Caótico e Maligno',
-                ]"
-                :key="i"
-                :value="a"
-                as="template"
-              >
-                <li
-                  :class="[
-                    active ? 'bg-red-100 text-red-900' : 'text-neutral-900',
-                    'relative cursor-default select-none py-2 pl-10 pr-4',
-                  ]"
-                >
-                  <span
-                    :class="[
-                      selected ? 'font-medium' : 'font-normal',
-                      'block truncate',
-                    ]"
-                  >
-                    {{ a }}
-                  </span>
-                  <span
-                    v-if="selected"
-                    class="absolute inset-y-0 left-0 flex items-center pl-3 text-red-600"
-                  >
-                    <CheckIcon class="h-5 w-5" aria-hidden="true" />
-                  </span>
-                </li>
-              </ListboxOption>
-            </ListboxOptions>
-          </transition>
-        </div>
-      </Listbox>
-    </div>
+    <CharacterSelect
+      :options="[
+        { label: 'Leal e Bondoso', value: 'LB' },
+        { label: 'Neutro e Bondoso', value: 'NB' },
+        { label: 'Caótico e Bondoso', value: 'CB' },
+        { label: 'Leal e Neutro', value: 'LN' },
+        { label: 'Neutro ', value: 'N' },
+        { label: 'Caótico e Neutro', value: 'CN' },
+        { label: 'Leal e Maligno', value: 'LM' },
+        { label: 'Neutro e Maligno', value: 'NM' },
+        { label: 'Caótico e Maligno', value: 'CM' },
+      ]"
+      v-model="mainStore.characterAlignment"
+    >
+      Alinhamento
+    </CharacterSelect>
 
-    <div class="w-full"></div>
+    <CharacterCombobox
+      v-model="mainStore.characterRace"
+      :options="[
+        { label: 'Humano', value: 1 },
+        { label: 'Elfo', value: 2 },
+        { label: 'Lefou', value: 3 },
+        { label: 'Dhallan', value: 4 },
+        { label: 'Osteon', value: 5 },
+        { label: 'Anão', value: 6 },
+        { label: 'Sílfide', value: 7 },
+        { label: 'Golem', value: 8 },
+        { label: 'Minotauro', value: 9 },
+      ]"
+    >
+      Raça
+    </CharacterCombobox>
+    <CharacterCombobox
+      v-model="mainStore.characterBackground"
+      :options="[
+        { label: 'Alquimista', value: 1 },
+        { label: 'Gladiador', value: 2 },
+        { label: 'Taverneiro', value: 3 },
+        { label: 'Eremita', value: 4 },
+        { label: 'Guarda', value: 5 },
+        { label: 'Pivete', value: 6 },
+        { label: 'Assistente de Laboratório', value: 7 },
+      ]"
+    >
+      Origem
+    </CharacterCombobox>
 
     <!-- DIALOG - EXPERIÊNCIA -->
     <TransitionRoot appear :show="isExpOpen" as="template">
