@@ -24,7 +24,7 @@ const levelByExp = computed(() => {
 const mainStore = useMainStore();
 </script>
 <template>
-  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="grid gap-4 sm:grid-cols-2 md:gap-x-8 lg:grid-cols-4">
     <CharacterInput
       v-model.trim="mainStore.characterName"
       :inputOptions="{ type: 'text' }"
@@ -39,13 +39,14 @@ const mainStore = useMainStore();
       >
         Nível
       </CharacterInput>
-      <button type="button" class="px-3 py-2">
-        <PlusCircleIcon
-          :class="
-            mainStore.level !== levelByExp ? 'text-red-500' : 'text-neutral-500'
-          "
-          class="h-6 w-6 text-neutral-500 hover:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
-        />
+      <button
+        type="button"
+        class="ml-2 inline-flex flex-row items-center gap-1 rounded-md border border-gray-300 bg-white py-2 pl-2 pr-2 text-gray-400 transition-all duration-150 hover:text-red-400 focus:border-red-300 focus:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200 sm:ml-4 sm:pl-1"
+      >
+        <PlusCircleIcon class="h-6 w-6" />
+        <span class="hidden text-sm font-medium tracking-tight sm:inline-block">
+          Experiência
+        </span>
       </button>
     </div>
 

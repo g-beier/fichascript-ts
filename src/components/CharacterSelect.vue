@@ -7,7 +7,7 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/vue";
-import { ChevronUpDownIcon, CheckIcon } from "@heroicons/vue/24/solid";
+import { ChevronUpDownIcon, CheckIcon } from "@heroicons/vue/20/solid";
 const props = defineProps<{
   modelValue: number | string;
   options: { value: number | string; label: string }[];

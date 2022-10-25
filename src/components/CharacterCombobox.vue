@@ -9,7 +9,7 @@ import {
   ComboboxOption,
   TransitionRoot,
 } from "@headlessui/vue";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/24/solid";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps<{
   options: { value: number | string; label: string }[];

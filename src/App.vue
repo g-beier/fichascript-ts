@@ -13,6 +13,18 @@ import Navigation from "./components/Navigation.vue";
         <Navigation></Navigation>
       </header>
     </div>
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <Transition
+        mode="out-in"
+        enter-active-class="transition-all duration-150 ease-in"
+        enter-from-class="-translate-x-8 opacity-0"
+        enter-to-class="translate-x-0 opacity-100"
+        leave-active-class="transition-opacity duration-100 ease-out"
+        leave-from-class="opacity-100 translate-x-0"
+        leave-to-class="opacity-0 translate-x-4"
+      >
+        <Component :is="Component" />
+      </Transition>
+    </RouterView>
   </div>
 </template>
