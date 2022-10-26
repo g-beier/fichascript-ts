@@ -12,9 +12,10 @@ import {
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps<{
-  options: { value: number | string; label: string }[];
   modelValue: number | string;
   nullable?: boolean;
+  options: { value: number | string; label: string }[];
+  placeholder?: string;
 }>();
 
 let query = ref("");
@@ -37,7 +38,7 @@ let filteredOptions = computed(() =>
 <template>
   <div class="block w-full">
     <Combobox
-      :modelValue="props.modelValue"
+      :modelValue="props.modelValue ?? null"
       @update:modelValue="(value) => $emit('update:modelValue', value)"
       :nullable="props?.nullable"
     >
@@ -49,12 +50,13 @@ let filteredOptions = computed(() =>
           class="relative w-full cursor-default rounded-md border-gray-300 bg-white text-left shadow-sm focus:outline-none focus-visible:ring focus-visible:ring-red-200 focus-visible:ring-opacity-50 sm:text-sm"
         >
           <ComboboxInput
-            class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm selection:bg-red-200 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 focus-visible:outline-none"
+            class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm selection:bg-red-200 placeholder:text-gray-400 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 focus-visible:outline-none"
             :displayValue="
               (value) =>
                 props.options.find((option) => option.value === value)?.label ||
                 ''
             "
+            :placeholder="props?.placeholder"
             @change="query = $event.target.value"
           />
           <ComboboxButton

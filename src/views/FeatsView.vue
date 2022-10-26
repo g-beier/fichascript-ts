@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useMainStore } from "@/stores/mainStore";
 import StatSlot from "../components/StatSlot.vue";
+import SkillSlot from "../components/SkillSlot.vue";
 
 const mainStore = useMainStore();
 </script>

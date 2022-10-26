@@ -38,6 +38,10 @@ import { Bars3Icon } from "@heroicons/vue/24/solid";
             <RouterLink to="/feats" class="block px-4 py-2">
               Poderes
             </RouterLink>
+
+            <RouterLink to="/skills" class="block px-4 py-2">
+              Perícias
+            </RouterLink>
           </div>
         </div>
       </PopoverPanel>

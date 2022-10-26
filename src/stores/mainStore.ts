@@ -17,6 +17,9 @@ export const useMainStore = defineStore("MainStore", () => {
 
   const level = ref(1);
   const halfLevel = computed(() => Math.floor(level.value / 2));
+  const proficencyBonus = computed(() =>
+    level.value >= 7 ? (level.value >= 15 ? 6 : 4) : 2
+  );
   const characterExperience = ref(0);
 
   const characterAlignment = ref("N");
@@ -48,6 +51,7 @@ export const useMainStore = defineStore("MainStore", () => {
     characterJobList,
     level,
     halfLevel,
+    proficencyBonus,
     characterExperience,
     characterAlignment,
     characterAge,
