@@ -7,7 +7,13 @@ module.exports = {
       fontFamily: {
         sans: ["Maven Pro", ...defaultTheme.fontFamily.sans],
       },
+      containers: {
+        micro: "10rem",
+      },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/container-queries"),
+  ],
 };

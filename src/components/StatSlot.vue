@@ -28,13 +28,13 @@ const props = defineProps(["modelValue"]);
       leave-to-class="translate-y-1 opacity-0"
     >
       <PopoverPanel
-        class="absolute inset-x-0 top-full z-10 mx-auto mt-2 w-full max-w-sm"
+        class="absolute inset-x-0 bottom-full z-10 mx-auto mb-2 w-full max-w-sm @container sm:top-full sm:mt-2"
       >
         <div
           class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-25"
         >
           <div
-            class="relative flex flex-col items-center gap-2 bg-white p-2 lg:flex-row lg:gap-4"
+            class="relative flex flex-col items-center gap-2 bg-white p-2 @micro:flex-row lg:gap-4"
           >
             <CharacterInput
               class="flex-0"

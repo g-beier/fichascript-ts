@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from "vue";
 import { PlusCircleIcon } from "@heroicons/vue/20/solid";
 import { useMainStore } from "@/stores/mainStore";
 import CharacterInput from "./CharacterInput.vue";
