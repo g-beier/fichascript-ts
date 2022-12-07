@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PlusCircleIcon } from "@heroicons/vue/20/solid";
+import { IdentificationIcon, PlusCircleIcon } from "@heroicons/vue/24/solid";
 import { useMainStore } from "@/stores/mainStore";
 import CharacterInput from "./CharacterInput.vue";
 import CharacterSelect from "./CharacterSelect.vue";
@@ -35,14 +35,14 @@ const mainStore = useMainStore();
       >
         Nível
       </CharacterInput>
+
       <button
         type="button"
-        class="ml-2 inline-flex flex-row items-center gap-1 rounded-md border border-gray-300 bg-white py-2 pl-2 pr-2 text-gray-400 transition-all duration-150 hover:text-red-400 focus:border-red-300 focus:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200 sm:ml-4 sm:pl-1"
+        title="Classe e Pontos de Experiência"
+        class="ml-2 inline-flex flex-row items-center rounded-md border border-gray-300 bg-white p-2 text-gray-400 transition-all duration-150 hover:text-red-400 focus:border-red-300 focus:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
       >
-        <PlusCircleIcon class="h-6 w-6" />
-        <span class="hidden text-sm font-medium tracking-tight sm:inline-block">
-          Experiência
-        </span>
+        <IdentificationIcon class="h-6 w-6" aria-hidden="true" />
+        <span class="sr-only"> Classe e Pontos de Experiência </span>
       </button>
     </div>
 
@@ -55,13 +55,11 @@ const mainStore = useMainStore();
       </CharacterCombobox>
       <button
         type="button"
-        title="Habilidades de raça"
-        class="ml-2 inline-flex flex-row items-center gap-1 rounded-md border border-gray-300 bg-white py-2 pl-2 pr-2 text-gray-400 transition-all duration-150 hover:text-red-400 focus:border-red-300 focus:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200 sm:ml-4 sm:pl-1"
+        title="Habilidades de Raça"
+        class="ml-2 inline-flex flex-row items-center gap-1 rounded-md border border-gray-300 bg-white p-2 text-gray-400 transition-all duration-150 hover:text-red-400 focus:border-red-300 focus:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
       >
-        <PlusCircleIcon class="h-6 w-6" />
-        <span class="hidden text-sm font-medium tracking-tight sm:inline-block">
-          Habilidades
-        </span>
+        <PlusCircleIcon class="h-6 w-6" aria-hidden="true" />
+        <span class="sr-only">Habilidades de Raça</span>
       </button>
     </div>
 
@@ -74,9 +72,11 @@ const mainStore = useMainStore();
       </CharacterCombobox>
       <button
         type="button"
+        title="Benefícios de Origem"
         class="ml-2 inline-flex flex-row items-center gap-1 rounded-md border border-gray-300 bg-white p-2 text-gray-400 transition-all duration-150 hover:text-red-400 focus:border-red-300 focus:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
       >
-        <PlusCircleIcon class="h-6 w-6 flex-shrink-0" />
+        <PlusCircleIcon class="h-6 w-6" aria-hidden="true" />
+        <span class="sr-only">Benefícios de Origem</span>
       </button>
     </div>
 
@@ -102,5 +102,7 @@ const mainStore = useMainStore();
     >
       Alinhamento
     </CharacterSelect>
+
+    <div class="flex w-full flex-row flex-nowrap items-end"></div>
   </div>
 </template>

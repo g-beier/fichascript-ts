@@ -6,15 +6,18 @@ import CharacterSelect from "./CharacterSelect.vue";
 import { useMainStore } from "@/stores/mainStore";
 
 const mainStore = useMainStore();
+const props = defineProps(["skill"]);
 
-const skill = reactive({
-  label: "Acrobacia",
-  trained: true,
-  bonus: 0,
-  stat: "DEX",
-  armorPenalty: true,
-  onlyTrained: true,
-});
+type Skill = {
+  label: string;
+  trained: boolean;
+  bonus: number;
+  stat: "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHA";
+  armorPenalty: boolean;
+  onlyTrained: boolean;
+};
+
+const skill = props.skill;
 </script>
 
 <template>
@@ -47,6 +50,10 @@ const skill = reactive({
         :options="[
           { value: 'STR', label: 'FOR' },
           { value: 'DEX', label: 'DES' },
+          { value: 'CON', label: 'CON' },
+          { value: 'INT', label: 'INT' },
+          { value: 'WIS', label: 'SAB' },
+          { value: 'CHA', label: 'CAR' },
         ]"
       >
         Habilidade

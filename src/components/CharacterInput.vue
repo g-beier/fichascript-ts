@@ -5,6 +5,7 @@ const props = defineProps<{
     type: string;
     min?: number;
     max?: number;
+    disabled?: boolean;
   };
 }>();
 
@@ -21,6 +22,7 @@ const emit = defineEmits(["update:modelValue"]);
       :max="inputOptions.max"
       :type="inputOptions.type"
       :value="modelValue"
+      :disabled="inputOptions.disabled"
       @input="
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
       "
