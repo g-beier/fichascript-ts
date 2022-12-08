@@ -21,7 +21,7 @@ const skill = props.skill;
 </script>
 
 <template>
-  <div class="rounded-md border border-gray-400 bg-white p-2 shadow-md">
+  <div class="rounded-md border border-gray-300 bg-white p-2 shadow-md">
     <div class="flex flex-row items-center justify-between">
       <strong>{{ skill.label }}</strong>
       <Switch

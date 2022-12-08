@@ -94,7 +94,7 @@ let filteredOptions = computed(() =>
               <li
                 class="relative cursor-default select-none py-2 pl-10 pr-4"
                 :class="[
-                  active ? 'bg-red-100 text-red-900' : 'text-neutral-900',
+                  active ? 'bg-red-100 text-red-900' : 'text-gray-900',
                   'relative cursor-default select-none py-2 pl-10 pr-4',
                 ]"
               >

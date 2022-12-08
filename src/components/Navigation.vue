@@ -31,7 +31,7 @@ import { Bars3Icon } from "@heroicons/vue/24/solid";
           class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
         >
           <div
-            class="relative grid divide-y divide-neutral-300/50 bg-white text-neutral-900"
+            class="relative grid divide-y divide-gray-300/50 bg-white text-gray-900"
           >
             <RouterLink to="/" class="block px-4 py-2"> Personagem </RouterLink>
 
