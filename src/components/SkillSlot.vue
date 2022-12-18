@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { reactive, computed } from "vue";
+import { computed, reactive } from "vue";
 import { Switch } from "@headlessui/vue";
 import CharacterInput from "./CharacterInput.vue";
 import CharacterSelect from "./CharacterSelect.vue";
 import { useMainStore } from "@/stores/mainStore";
 
 const mainStore = useMainStore();
-const props = defineProps(["skill"]);
-
 type Skill = {
   label: string;
   trained: boolean;
@@ -17,13 +15,36 @@ type Skill = {
   onlyTrained: boolean;
 };
 
-const skill = props.skill;
+// const props = defineProps(["skill"]);
+
+const skill: Skill = reactive({
+  label: "Acrobacia",
+  trained: true,
+  bonus: 0,
+  stat: "DEX",
+  armorPenalty: true,
+  onlyTrained: false,
+});
+
+const total = computed(() => {
+  const statMod = (mainStore as any)["stat" + skill.stat].mod();
+  const levelProf = skill.trained ? mainStore.proficencyBonus : 0;
+  const armor = skill.armorPenalty ? 0 : 0;
+  return levelProf + statMod + armor + skill.bonus;
+});
 </script>
 
 <template>
   <div class="rounded-md border border-gray-300 bg-white p-2 shadow-md">
     <div class="flex flex-row items-center justify-between">
-      <strong>{{ skill.label }}</strong>
+      <strong>
+        {{ skill.label }}
+        <span
+          class="ml-2 inline-block rounded-sm bg-red-700 px-2 text-sm text-white"
+        >
+          {{ total > 0 ? `+${total}` : total }}
+        </span>
+      </strong>
       <Switch
         v-model="skill.trained"
         :class="skill.trained ? 'bg-gray-400' : 'bg-gray-300'"

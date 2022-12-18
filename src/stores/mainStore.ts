@@ -36,12 +36,12 @@ export const useMainStore = defineStore("MainStore", () => {
     };
   }
 
-  const statStr = reactive(createStat("FOR"));
-  const statDex = reactive(createStat("DES"));
-  const statCon = reactive(createStat("CON"));
-  const statInt = reactive(createStat("INT"));
-  const statWis = reactive(createStat("SAB"));
-  const statCha = reactive(createStat("CAR"));
+  const statSTR = reactive(createStat("FOR"));
+  const statDEX = reactive(createStat("DES"));
+  const statCON = reactive(createStat("CON"));
+  const statINT = reactive(createStat("INT"));
+  const statWIS = reactive(createStat("SAB"));
+  const statCHA = reactive(createStat("CAR"));
 
   return {
     characterName,
@@ -55,11 +55,11 @@ export const useMainStore = defineStore("MainStore", () => {
     characterExperience,
     characterAlignment,
     characterAge,
-    statStr,
-    statDex,
-    statCon,
-    statInt,
-    statWis,
-    statCha,
+    statSTR,
+    statDEX,
+    statCON,
+    statINT,
+    statWIS,
+    statCHA,
   };
 });
