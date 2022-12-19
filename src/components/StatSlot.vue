@@ -9,7 +9,7 @@ const props = defineProps(["modelValue"]);
   <Popover v-slot="{ open }" class="relative">
     <PopoverButton
       :class="open ? 'bg-red-50' : ''"
-      class="flex w-full flex-col items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-500 hover:bg-red-100 focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 focus-visible:outline-none"
+      class="flex w-full flex-col items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-500 hover:bg-sky-100 focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50 focus-visible:outline-none"
     >
       <span class="text-sm font-medium tracking-tight">
         {{ props.modelValue.label }}

@@ -39,7 +39,7 @@ const mainStore = useMainStore();
       <button
         type="button"
         title="Classe e Pontos de Experiência"
-        class="ml-2 inline-flex flex-row items-center rounded-md border border-gray-300 bg-white p-2 text-gray-400 transition-all duration-150 hover:text-red-400 focus:border-red-300 focus:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
+        class="ml-2 inline-flex flex-row items-center rounded-md border border-gray-300 bg-white p-2 text-gray-400 transition-all duration-150 hover:text-sky-400 focus:border-sky-300 focus:text-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-200"
       >
         <IdentificationIcon class="h-6 w-6" aria-hidden="true" />
         <span class="sr-only"> Classe e Pontos de Experiência </span>
@@ -56,7 +56,7 @@ const mainStore = useMainStore();
       <button
         type="button"
         title="Habilidades de Raça"
-        class="ml-2 inline-flex flex-row items-center gap-1 rounded-md border border-gray-300 bg-white p-2 text-gray-400 transition-all duration-150 hover:text-red-400 focus:border-red-300 focus:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
+        class="ml-2 inline-flex flex-row items-center gap-1 rounded-md border border-gray-300 bg-white p-2 text-gray-400 transition-all duration-150 hover:text-sky-400 focus:border-sky-300 focus:text-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-200"
       >
         <PlusCircleIcon class="h-6 w-6" aria-hidden="true" />
         <span class="sr-only">Habilidades de Raça</span>
@@ -73,7 +73,7 @@ const mainStore = useMainStore();
       <button
         type="button"
         title="Benefícios de Origem"
-        class="ml-2 inline-flex flex-row items-center gap-1 rounded-md border border-gray-300 bg-white p-2 text-gray-400 transition-all duration-150 hover:text-red-400 focus:border-red-300 focus:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
+        class="ml-2 inline-flex flex-row items-center gap-1 rounded-md border border-gray-300 bg-white p-2 text-gray-400 transition-all duration-150 hover:text-sky-400 focus:border-sky-300 focus:text-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-200"
       >
         <PlusCircleIcon class="h-6 w-6" aria-hidden="true" />
         <span class="sr-only">Benefícios de Origem</span>

@@ -31,15 +31,29 @@ import { Bars3Icon } from "@heroicons/vue/24/solid";
           class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
         >
           <div
-            class="relative grid divide-y divide-gray-300/50 bg-white text-gray-900"
+            class="relative grid divide-y divide-gray-300/50 bg-white text-gray-700"
           >
-            <RouterLink to="/" class="block px-4 py-2"> Personagem </RouterLink>
+            <RouterLink
+              to="/"
+              class="block px-4 py-2 hover:bg-sky-100 focus:bg-sky-100 focus:outline-none active:text-sky-900"
+              active-class="font-medium"
+            >
+              Personagem
+            </RouterLink>
 
-            <RouterLink to="/feats" class="block px-4 py-2">
+            <RouterLink
+              to="/feats"
+              class="block px-4 py-2 hover:bg-sky-100 focus:bg-sky-100 focus:outline-none active:text-sky-900"
+              active-class="font-medium"
+            >
               Poderes
             </RouterLink>
 
-            <RouterLink to="/skills" class="block px-4 py-2">
+            <RouterLink
+              to="/skills"
+              class="block px-4 py-2 hover:bg-sky-100 focus:bg-sky-100 focus:outline-none active:text-sky-900"
+              active-class="font-medium"
+            >
               Perícias
             </RouterLink>
           </div>
