@@ -31,7 +31,7 @@ const label = computed(
       </ListboxLabel>
       <div class="relative mt-1">
         <ListboxButton
-          class="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50"
+          class="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-sky-300 focus:outline-none focus:ring focus:ring-sky-200 focus:ring-opacity-50"
         >
           <span class="block truncate">
             {{ label }}
@@ -62,7 +62,7 @@ const label = computed(
             >
               <li
                 :class="[
-                  active ? 'bg-red-100 text-red-900' : 'text-gray-900',
+                  active ? 'bg-sky-100 text-sky-900' : 'text-gray-900',
                   'relative cursor-default select-none py-2 pl-10 pr-4',
                 ]"
               >
@@ -76,7 +76,7 @@ const label = computed(
                 </span>
                 <span
                   v-if="selected"
-                  class="absolute inset-y-0 left-0 flex items-center pl-3 text-red-600"
+                  class="absolute inset-y-0 left-0 flex items-center pl-3 text-sky-600"
                 >
                   <CheckIcon class="h-5 w-5" aria-hidden="true" />
                 </span>

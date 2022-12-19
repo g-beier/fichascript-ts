@@ -26,7 +26,7 @@ const emit = defineEmits(["update:modelValue"]);
       @input="
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
       "
-      class="mt-1 block w-full rounded-md border-gray-300 shadow-sm selection:bg-red-200 focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 focus-visible:outline-none"
+      class="mt-1 block w-full rounded-md border-gray-300 shadow-sm selection:bg-sky-200 focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50 focus-visible:outline-none"
     />
   </label>
 </template>

@@ -40,7 +40,7 @@ const total = computed(() => {
       <strong>
         {{ skill.label }}
         <span
-          class="ml-2 inline-block rounded-sm bg-red-700 px-2 text-sm text-white"
+          class="ml-2 inline-block rounded-sm bg-sky-700 px-2 text-sm text-white"
         >
           {{ total > 0 ? `+${total}` : total }}
         </span>
@@ -48,7 +48,7 @@ const total = computed(() => {
       <Switch
         v-model="skill.trained"
         :class="skill.trained ? 'bg-gray-400' : 'bg-gray-300'"
-        class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring focus:ring-red-200 focus:ring-opacity-50 focus:ring-offset-1 focus:ring-offset-red-300 focus-visible:outline-none"
+        class="relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring focus:ring-sky-200 focus:ring-opacity-50 focus:ring-offset-1 focus:ring-offset-sky-300 focus-visible:outline-none"
       >
         <span class="sr-only">Treinamento em {{ skill.label }}</span>
         <span

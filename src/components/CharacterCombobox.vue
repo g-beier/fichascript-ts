@@ -47,10 +47,10 @@ let filteredOptions = computed(() =>
       </ComboboxLabel>
       <div class="relative mt-1">
         <div
-          class="relative w-full cursor-default rounded-md border-gray-300 bg-white text-left shadow-sm focus:outline-none focus-visible:ring focus-visible:ring-red-200 focus-visible:ring-opacity-50 sm:text-sm"
+          class="relative w-full cursor-default rounded-md border-gray-300 bg-white text-left shadow-sm focus:outline-none focus-visible:ring focus-visible:ring-sky-200 focus-visible:ring-opacity-50 sm:text-sm"
         >
           <ComboboxInput
-            class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm selection:bg-red-200 placeholder:text-gray-400 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 focus-visible:outline-none"
+            class="w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm selection:bg-sky-200 placeholder:text-gray-400 focus:border-sky-300 focus:outline-none focus:ring focus:ring-sky-200 focus:ring-opacity-50 focus-visible:outline-none"
             :displayValue="
               (value) =>
                 props.options.find((option) => option.value === value)?.label ||
@@ -58,6 +58,7 @@ let filteredOptions = computed(() =>
             "
             :placeholder="props?.placeholder"
             @change="query = $event.target.value"
+            spellcheck="false"
           />
           <ComboboxButton
             class="absolute inset-y-0 right-0 flex items-center pr-2"
@@ -94,7 +95,7 @@ let filteredOptions = computed(() =>
               <li
                 class="relative cursor-default select-none py-2 pl-10 pr-4"
                 :class="[
-                  active ? 'bg-red-100 text-red-900' : 'text-gray-900',
+                  active ? 'bg-sky-100 text-sky-900' : 'text-gray-900',
                   'relative cursor-default select-none py-2 pl-10 pr-4',
                 ]"
               >
@@ -109,7 +110,7 @@ let filteredOptions = computed(() =>
                 </span>
                 <span
                   v-if="selected"
-                  class="absolute inset-y-0 left-0 flex items-center pl-3 text-red-600"
+                  class="absolute inset-y-0 left-0 flex items-center pl-3 text-sky-600"
                 >
                   <CheckIcon class="h-5 w-5" aria-hidden="true" />
                 </span>
