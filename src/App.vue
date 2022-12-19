@@ -4,7 +4,7 @@ import Navigation from "./components/Navigation.vue";
 </script>
 
 <template>
-  <div class="relative flex h-screen flex-col flex-nowrap">
+  <div class="relative flex h-screen flex-col flex-nowrap bg-gray-100">
     <div class="bg-gray-600">
       <header
         class="container mx-auto flex flex-row flex-nowrap items-center justify-between px-4"
